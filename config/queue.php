@@ -31,8 +31,15 @@ return [
     'connections' => [
 
         'sync' => [
-            'driver' => 'sync',
-        ],
+            'driver' => 'async',
+        ],'async' => array(
+            'driver' => 'async',
+            'table' => 'jobs',
+            'queue' => 'default',
+            'expire' => 60,
+            'binary' => 'php',
+            'binary_args' => '',
+        ),
 
         'database' => [
             'driver' => 'database',

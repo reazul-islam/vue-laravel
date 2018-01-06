@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('test',function (){
+    \App\Jobs\UserUpdate::dispatch(new \App\User());
+   //event(new \App\Events\Event(new \App\User()));
+      return "Hello world";
+});
