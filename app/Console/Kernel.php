@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
+use App\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        \App\Console\Commands\CronUser::class,
+
     ];
 
     /**
@@ -24,6 +27,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('CronUser:cronjob')
+            ->everyMinute();
+        /*$schedule->call(function () {
+            $u = new User();
+            $u->name = 'Reazul';
+            $u->email = str_shuffle("hello worlwsfd sdf@ sadfk sdfk @ sadf @");
+            $u->password = md5('test');
+            $u->save();
+        })->everyMinute();*/
         // $schedule->command('inspire')
         //          ->hourly();
     }
