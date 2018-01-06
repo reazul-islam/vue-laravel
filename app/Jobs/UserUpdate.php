@@ -23,6 +23,7 @@ class UserUpdate implements ShouldQueue
     {
         $this->user = $user;
         $master=0;
+        $test = 'I am from master';
     }
 
     /**
